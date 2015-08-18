@@ -25,9 +25,6 @@ shinyUI(pageWithSidebar(
     radioButtons(inputId='sample', label='Size of sample', 
                  choices=c('100', '1000', '10000'), selected=1000, inline=TRUE),
     
-    uiOutput(outputId='mean'),
-    uiOutput(outputId='sd'),
-    
     conditionalPanel(condition="input.dist=='Normal'",
                      sliderInput(inputId='mean', label='Mean', value=normal.mean, min=-100, max=100, step=0.01),
                      sliderInput(inputId='sd', label='Standard Deviation (>0)', value=normal.sd, min=0.01, max=100, step=0.01)
