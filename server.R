@@ -64,6 +64,18 @@ shinyServer(
       
     })
     
+    output$text2 <- renderText({
+        switch(
+          input$dist,
+          'Normal' = sprintf('The mean is distributed as a normal with mean %.2f and standard error %.2f.', as.numeric(input$mean), as.numeric(input$sd)/sqrt(n.obs)),
+          'Exponential' = sprintf('The mean is distributed as a normal with mean and standard error %.2f (both).', 1.0/as.numeric(input$rate)),
+          'Binomial' = sprintf('The mean is distributed as a normal with mean %.2f and standard error %.2f.', 
+                               as.numeric(input$size)*as.numeric(input$prob),
+                               as.numeric(input$size)*as.numeric(input$prob)*(1-as.numeric(input$prob)))
+        )
+        
+    })
+    
   }
 
 )

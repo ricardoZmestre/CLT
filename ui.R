@@ -74,6 +74,26 @@ shinyUI(pageWithSidebar(
           'chosen number of draws, and the mean is calculated for each draw, giving as many ',
           'means as number of draws. This set of means should be distributed approximately as ',
           'a normal.'),
+        p('To see plots illustrating the CLT, go to the tab to the right ("Distribution of means (CLT)")'),
+        p('To see the meaning of input parameters for the distributions, go to the rightmost tab ("Further details")'),
+        br()
+      ),
+      
+      tabPanel(
+        title='Distribution of means (CLT)',
+        plotOutput("means"),
+        helpText('The asymptotic normal \\(N(\\mu, \\frac{\\sigma}{\\sqrt{n}})\\) ',
+                 ' distribution is given by the red line.'),
+        textOutput(outputId="text2"),
+        verbatimTextOutput(outputId="text0"),
+        verbatimTextOutput(outputId="text1"),
+        br()
+      ),
+      
+      tabPanel(
+        title='Further details',
+        withMathJax(),
+        h4('The underlying distributions'),
         p('The parameters to input depend on the underlying distribution.'),
         p('For the normal distribution, the mean \\(\\mu\\) and the standard error \\(\\sigma\\)',
           'are needed.'),
@@ -85,18 +105,12 @@ shinyUI(pageWithSidebar(
           ' event happening, \\(p\\). The corresponding mean and standard error are \\(n p\\) and',
           ' \\(\\sqrt{n p (1 - p)}\\), respectively.'),
         helpText('NB: The standard error of the simulated means are the given standard errors',
-                'divided by \\(\\sqrt{n}\\).')
+                 'divided by \\(\\sqrt{n}\\).'),
+        br()
       ),
       
-      tabPanel(
-        title='Distribution of means (CLT)',
-        plotOutput("means"),
-        verbatimTextOutput(outputId="text0"),
-        verbatimTextOutput(outputId="text1"),
-        helpText('The asymptotic normal \\(N(\\mu, \\frac{\\sigma}{\\sqrt{n}})\\) ',
-                 ' distribution is given by the red line.'),
-        br()
-      )
+      br()
+      
     ),
     
     br()
