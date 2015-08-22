@@ -51,7 +51,7 @@ shinyServer(
     })
     
     output$text0 <- renderText({
-      sprintf('Distribution: %s; size of samples: %d', input$dist, as.numeric(input$sample))
+      sprintf('Distribution: %s; size of each sample: %d; draws: %d', input$dist, n.obs, as.numeric(input$sample))
     })
     
     output$text1 <- renderText({

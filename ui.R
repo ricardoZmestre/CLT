@@ -27,7 +27,7 @@ shinyUI(pageWithSidebar(
     
     conditionalPanel(condition="input.dist=='Normal'",
                      sliderInput(inputId='mean', label='Mean', value=normal.mean, min=-100, max=100, step=0.01),
-                     sliderInput(inputId='sd', label='Standard Deviation (>0)', value=normal.sd, min=0.01, max=100, step=0.01)
+                     sliderInput(inputId='sd', label='Standard Error (>0)', value=normal.sd, min=0.01, max=100, step=0.01)
     ),
 
     conditionalPanel(condition="input.dist=='Exponential'",
@@ -64,7 +64,7 @@ shinyUI(pageWithSidebar(
         p('This Shiny application illustrates the CLT for three different distributions and ',
           'three different number of draws. The distributions are the normal one, the ',
           'exponential one and the binomial one; the number of draws are 100, 1,000 and 10,000.',
-          'In all cases, for simplicity, the size of each simulated sample is 20. ',
+          'In all cases, for simplicity, the size of each simulated sample is kept fixed at 20. ',
           'The higher the number of draws, the better the means of the draws approximate a normal ',
           'distribution.'),
         p('The chosen distribution and sample size is simulated for as many times as the ',
@@ -82,6 +82,7 @@ shinyUI(pageWithSidebar(
         helpText('The asymptotic normal \\(N(\\mu, \\frac{\\sigma}{\\sqrt{n}})\\) ',
                  ' distribution is given by the red line.'),
         textOutput(outputId="text2"),
+        h4('Information on the chosen underlying distribution'), 
         verbatimTextOutput(outputId="text0"),
         verbatimTextOutput(outputId="text1"),
         br()
@@ -96,6 +97,7 @@ shinyUI(pageWithSidebar(
           'are needed.'),
         p('For the exponential distribution, a parameter \\(\\lambda\\) is needed,',
           ' indicating the rate of decay in the probability of an event occuring as time goes by.',
+          ' This parameter is called rate in the entry panel.',
           ' The corresponding mean and standard error are both \\(\\frac{1}{\\lambda}\\).'),
         p('For the binomial distribution, two parameters are needed: the number of instances',
           ' the random variable has been observed (the size), \\(n\\), and the probability of a given ',
